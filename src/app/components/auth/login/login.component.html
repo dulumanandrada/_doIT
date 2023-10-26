@@ -1,0 +1,33 @@
+<div class="view">
+    <div class="login-card">
+        <div class="row title">
+            <h1>{{ title | uppercase}}</h1>
+        </div>
+        <div class="form">
+            <form [formGroup]="loginForm">
+                <div class="row username">
+                    <input pInputText type="text" class="p-inputtext-lg" formControlName="username" placeholder="username" />
+                    <span *ngIf="loginForm && loginForm.touched && loginForm.invalid">
+                        <strong>Username-ul este obligatoriu! (minim 3 caractere)</strong>
+                    </span>
+                </div>
+                <div class="row password">
+                    <p-password class="p-inputtext-lg" formControlName="password" placeholder="password" [feedback]="false"></p-password>
+                    <span *ngIf="loginForm && loginForm.touched && loginForm.invalid">
+                        <strong>Parola este obligatorie! (minim 3 caractere)</strong>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="row buttons">
+            <button type="submit" class="btn btn-login" 
+                [disabled]="loginForm.invalid"
+                (click)="onSubmit()"
+                >Login</button>
+            <button type="button" class="btn btn-signup"
+                (click)="navigateToAuthentification()"
+                >Sign up</button>
+        </div>
+    </div>
+</div>
+
