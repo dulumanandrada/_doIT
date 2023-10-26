@@ -1,1 +1,35 @@
-<p>authentification works!</p>
+
+<div class="view">
+    <div class="auth-card">
+        <div class="row title">
+            <h1>{{ title | uppercase}}</h1>
+        </div>
+        <div class="form">
+            <form [formGroup]="authForm">
+                <div class="row username">
+                    <input pInputText type="text" class="p-inputtext-lg" formControlName="username" placeholder="username" 
+                    [ngClass]="{'input-invalid': authForm && authForm.get('username')?.touched && authForm.get('username')?.invalid}"/>
+                    <span *ngIf="authForm && authForm.get('username')?.touched && authForm.get('username')?.invalid">
+                        <strong>Username-ul este obligatoriu! (minim 3 caractere)</strong>
+                    </span>
+                </div>
+                <div class="row password">
+                    <p-password class="p-inputtext-lg" formControlName="password" placeholder="password" [feedback]="false"
+                    [ngClass]="{'input-invalid': authForm && authForm.get('password')?.touched && authForm.get('password')?.invalid}"></p-password>
+                    <span *ngIf="authForm && authForm.get('password')?.touched && authForm.get('password')?.invalid">
+                        <strong>Parola este obligatorie! (minim 3 caractere)</strong>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="row buttons">
+            <button type="submit" class="btn btn-auth" 
+                [disabled]="authForm.invalid"
+                (click)="onSubmit()"
+                >Sign up</button>
+            <button type="button" class="btn btn-signup"
+                (click)="navigateToLogin()"
+                >Login</button>
+        </div>
+    </div>
+</div>

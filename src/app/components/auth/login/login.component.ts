@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { IUser } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LoginComponent {
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   title = "Login"
 
@@ -21,11 +22,12 @@ export class LoginComponent {
 
   onSubmit() {
     console.log(this.loginForm?.value);
-    
+    let user: IUser = this.loginForm.value as unknown as IUser
+    user.id = user.username
+    this.authService.getUserById(user.id).then()
   }
 
   navigateToAuthentification() {
-    console.log("go to authentification!");
     this.router.navigate(['auth/authentification'])
   }
 }

@@ -7,23 +7,36 @@ import { AuthComponent } from './components/auth/auth.component';
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/auth",
+    redirectTo: "/auth/login",
     pathMatch: "full"
   },
   {
     path: "auth",
-    children: [
-      {
-        path: "login",
-        component: LoginComponent
-      },
-      {
-        path: "authentification",
-        component: AuthentificationComponent
-      }
-    ],
-    component: AuthComponent
+    redirectTo: "/auth/login",
+    pathMatch: "full"
+  },
+  {
+    path: "auth/login",
+    component: LoginComponent
+  },
+  {
+    path: "auth/authentification",
+    component: AuthentificationComponent
   }
+  // {
+  //   path: "auth",
+  //   children: [
+  //     {
+  //       path: "login",
+  //       component: LoginComponent
+  //     },
+  //     {
+  //       path: "authentification",
+  //       component: AuthentificationComponent
+  //     }
+  //   ],
+  //   component: AuthComponent
+  // }
 ];
 
 @NgModule({
