@@ -26,10 +26,10 @@ export class AuthentificationComponent {
     let newUser: IUser = this.authForm.value as unknown as IUser
     newUser.guid = Guid.create().toString()
     newUser.id = newUser.username
-    this.authService.addUser(newUser).then().finally(() => this.navigateToLogin())
+    this.authService.addUser(newUser).then().finally(() => this.navigateTo('/auth/login'))
   }
 
-  navigateToLogin(){
-    this.router.navigate(['/auth/login'])
+  navigateTo(route: string){
+    this.router.navigate([route])
   }
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { AuthentificationComponent } from './components/auth/authentification/authentification.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { BoardComponent } from './components/board/board.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: "auth/authentification",
     component: AuthentificationComponent
+  },
+  {
+    path: "board",
+    component: BoardComponent
   }
   // {
   //   path: "auth",

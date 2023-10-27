@@ -52,8 +52,8 @@
         }
 
         .input-invalid {
-            border: 2px solid $red3;
-            border-left: 6px solid $red3;
+            border: 2px solid rgb($red3, 1);
+            border-left: 6px solid rgb($red3, 1);
         }
     }
 
@@ -76,6 +76,6 @@
 }
 
 strong {
-    color: $red3;
+    color: rgb($red3, 1);
 }
 

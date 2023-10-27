@@ -12,13 +12,17 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BoardComponent } from './components/board/board.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AuthComponent,
-    AuthentificationComponent
+    AuthentificationComponent,
+    BoardComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

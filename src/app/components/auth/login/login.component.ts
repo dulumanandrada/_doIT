@@ -24,10 +24,10 @@ export class LoginComponent {
     console.log(this.loginForm?.value);
     let user: IUser = this.loginForm.value as unknown as IUser
     user.id = user.username
-    this.authService.getUserById(user.id).then()
+    this.authService.getUserById(user.id).then(() => this.navigateTo('/board'))
   }
 
-  navigateToAuthentification() {
-    this.router.navigate(['auth/authentification'])
+  navigateTo(route: string) {
+    this.router.navigate([route])
   }
 }
