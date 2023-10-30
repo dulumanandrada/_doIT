@@ -12,5 +12,113 @@
       "guid": "e1930768-8089-0074-0b30-b84690b5005e",
       "id": "sdfgdf"
     }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "task 1",
+      "fromPerson": {
+        "id": "user1",
+        "guid": "sdfgsdg",
+        "username": "user1",
+        "password": "user1"
+      },
+      "forPerson": {
+        "id": "user2",
+        "guid": "khfsiurh",
+        "username": "user2",
+        "password": "user2"
+      },
+      "assignDate": "15-09-2023",
+      "deadLine": "18-09-2023",
+      "details": "These are details. you should finish the task till deadline.",
+      "status": {
+        "id": 2,
+        "message": "progress"
+      }
+    },
+    {
+      "id": 2,
+      "title": "task 2",
+      "fromPerson": {
+        "id": "user1",
+        "guid": "sdfgsdg",
+        "username": "user1",
+        "password": "user1"
+      },
+      "forPerson": {
+        "id": "user2",
+        "guid": "khfsiurh",
+        "username": "user2",
+        "password": "user2"
+      },
+      "assignDate": "15-09-2023",
+      "deadLine": "18-09-2023",
+      "details": "These are details. you should finish the task till deadline.",
+      "status": {
+        "id": 2,
+        "message": "progress"
+      }
+    },
+    {
+      "id": 3,
+      "title": "task 3",
+      "fromPerson": {
+        "id": "user1",
+        "guid": "sdfgsdg",
+        "username": "user1",
+        "password": "user1"
+      },
+      "forPerson": {
+        "id": "user2",
+        "guid": "khfsiurh",
+        "username": "user2",
+        "password": "user2"
+      },
+      "assignDate": "15-09-2023",
+      "deadLine": "18-09-2023",
+      "details": "These are details. you should finish the task till deadline.",
+      "status": {
+        "id": 2,
+        "message": "progress"
+      }
+    },
+    {
+      "id": 4,
+      "title": "task 4",
+      "fromPerson": {
+        "id": "user1",
+        "guid": "sdfgsdg",
+        "username": "user1",
+        "password": "user1"
+      },
+      "forPerson": {
+        "id": "user2",
+        "guid": "khfsiurh",
+        "username": "user2",
+        "password": "user2"
+      },
+      "assignDate": "15-09-2023",
+      "deadLine": "18-09-2023",
+      "details": "These are details. you should finish the task till deadline.",
+      "status": {
+        "id": 2,
+        "message": "progress"
+      }
+    }
+  ],
+  "statusTask": [
+    {
+      "id": 1,
+      "message": "progress"
+    },
+    {
+      "id": 2,
+      "message": "finished"
+    },
+    {
+      "id": 3,
+      "message": "late"
+    }
   ]
 }

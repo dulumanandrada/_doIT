@@ -2,6 +2,7 @@ import { IStatus } from "./status"
 import { IUser } from "./user"
 
 export interface ITask {
+    id: number,
     title: string,
     fromPerson: IUser,
     forPerson: IUser,

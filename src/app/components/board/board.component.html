@@ -2,7 +2,7 @@
 <div class="view">
     <app-menu></app-menu>
     <div class="content">
-        <div class="task-card" *ngFor="let task of tasks">
+        <div class="task-card" *ngFor="let task of tasks" (click)="navigateToTaskDetails(task)">
             <div class="task-title">
                 <strong>{{task.title}}</strong>
             </div>

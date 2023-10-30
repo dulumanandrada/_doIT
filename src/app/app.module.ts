@@ -14,6 +14,8 @@ import { ButtonModule } from 'primeng/button';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BoardComponent } from './components/board/board.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { TaskDetailsComponent } from './components/task-details/task-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { MenuComponent } from './components/menu/menu.component';
     AuthComponent,
     AuthentificationComponent,
     BoardComponent,
-    MenuComponent
+    MenuComponent,
+    TaskDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { MenuComponent } from './components/menu/menu.component';
     InputTextModule,
     PasswordModule,
     ButtonModule,
-    NgbModule 
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   exports: [AppRoutingModule],

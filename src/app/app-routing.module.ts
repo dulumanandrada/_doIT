@@ -4,6 +4,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { AuthentificationComponent } from './components/auth/authentification/authentification.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { BoardComponent } from './components/board/board.component';
+import { TaskDetailsComponent } from './components/task-details/task-details.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,11 @@ const routes: Routes = [
   },
   {
     path: "board",
-    component: BoardComponent
+    component: BoardComponent,
+  },
+  {
+    path: "board/:id",
+    component: TaskDetailsComponent
   }
   // {
   //   path: "auth",
