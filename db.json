@@ -29,8 +29,8 @@
         "username": "user2",
         "password": "user2"
       },
-      "assignDate": "15-09-2023",
-      "deadLine": "18-09-2023",
+      "assignDate": "2023-09-15",
+      "deadLine": "2023-09-18",
       "details": "These are details. you should finish the task till deadline.",
       "status": {
         "id": 2,
@@ -52,8 +52,8 @@
         "username": "user2",
         "password": "user2"
       },
-      "assignDate": "15-09-2023",
-      "deadLine": "18-09-2023",
+      "assignDate": "2023-09-15",
+      "deadLine": "2023-09-18",
       "details": "These are details. you should finish the task till deadline.",
       "status": {
         "id": 2,
@@ -75,8 +75,8 @@
         "username": "user2",
         "password": "user2"
       },
-      "assignDate": "15-09-2023",
-      "deadLine": "18-09-2023",
+      "assignDate": "2023-09-15",
+      "deadLine": "2023-09-18",
       "details": "These are details. you should finish the task till deadline.",
       "status": {
         "id": 2,
@@ -98,8 +98,8 @@
         "username": "user2",
         "password": "user2"
       },
-      "assignDate": "15-09-2023",
-      "deadLine": "18-09-2023",
+      "assignDate": "2023-09-15",
+      "deadLine": "2023-09-18",
       "details": "These are details. you should finish the task till deadline.",
       "status": {
         "id": 2,

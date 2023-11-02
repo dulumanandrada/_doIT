@@ -1,5 +1,36 @@
 @import "../../styles/variables.scss";
 
+// progress bar
+:host ::ng-deep .p-progressbar-value {
+    background-color: $purple;
+}
+:host ::ng-deep .p-progressbar.p-component {
+    height: 100%;
+}
+:host ::ng-deep p-progressbar.p-element {
+    height: 40px;
+}
+
+//disabled calendar
+:host ::ng-deep .p-calendar-disabled {
+    background-color: transparent;
+    width: 100%;
+}
+:host ::ng-deep .p-ripple.p-element.p-highlight {
+    background-color: $purple;
+    color: $white;
+}
+:host ::ng-deep .ng-animate-disabled.p-datepicker.p-disabled {
+    border-radius: 10px;
+    opacity: 1;
+}
+:host ::ng-deep button.p-datepicker-prev {
+    display: none !important;
+}
+:host ::ng-deep button.p-datepicker-next {
+    display: none !important;
+}
+
 .view {
     width: 100%;
     height: 100%;
@@ -13,9 +44,6 @@
     margin: 0;
     padding: 0 20px;
     color: $white;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
     display: grid;
     grid-template-columns: 1fr 30px 30%;
 }
@@ -31,12 +59,48 @@
     padding: 10px;
     background-color: $bej;
     color: $purple-dark;
-    height: 70%;
+    height: 80%;
+    max-width: 100%;
     border-radius: 10px;
-    align-items: center;
-    justify-content: center;
+    // align-items: center;
+    // justify-content: center;
     position: -webkit-sticky;
     position: sticky;
     top: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-self: flex-end;
+
+    .button {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+
+        button {
+            width: calc(50% - 10px);
+            height: 100%;
+            background-color: $purple;
+            border: none;
+        }
+    }
+
+    .progress {
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+        height: fit-content;
+        width: 100%;
+
+        .progress-bar {
+            background-color: transparent;
+            height: 40px;
+            width: 100%;
+        }
+    }
 }
 

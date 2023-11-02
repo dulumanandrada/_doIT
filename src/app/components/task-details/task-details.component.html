@@ -9,10 +9,21 @@
         <div></div>
         <div class="div2">
             <div class="dates">
-                <!-- <h3>Assign date:</h3>
-                <h3>{{task.assignDate}}</h3>
-                <h3>Deadline:</h3>
-                <h3>{{task.deadLine}}</h3> -->
+                <div class="card flex justify-content-center" style="border-radius: 10px;">
+                    <p-calendar class="max-w-full" [(ngModel)]="dates" selectionMode="multiple"
+                     [inline]="true" [disabled]="true"></p-calendar>
+                </div>
+            </div>
+            <div class="button">
+                <button class="btn btn-success">I will do it</button>
+                <button class="btn btn-success">I Can't do it</button>
+            </div>
+
+            <div class="progress">
+                <h6>Progress:</h6>
+                <div class="progress-bar">
+                    <p-progressBar [value]="80"></p-progressBar>
+                </div>
             </div>
         </div>
     </div>
