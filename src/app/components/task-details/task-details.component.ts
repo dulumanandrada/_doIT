@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ICheckItem } from 'src/app/models/check-item';
 import { ITask } from 'src/app/models/task';
 import { TasksService } from 'src/app/services/tasks.service';
 
@@ -13,11 +14,20 @@ export class TaskDetailsComponent implements OnInit {
   idTask: number
   task: ITask = {} as ITask
   dates: Date[] = undefined as unknown as Date[]
+  checkedItems: ICheckItem[] = [] 
   formGroup: FormGroup = new FormGroup({
     date: new FormControl<Date | null>(null)
   });
+  addItemCheckListForm: FormGroup = new FormGroup({
+    text: new FormControl(null, [Validators.required, Validators.minLength(1)])
+  })
+  messageToSend: string | null = null
 
-  date: Date | null | undefined | Event
+  firstButtons: boolean = false
+  secondButtons: boolean = false
+  addItemCheckList: boolean = false
+  visibleSubmitTask: boolean = false
+  visibleMessageOwner: boolean = false
 
   constructor(private router: Router, private tasksService: TasksService) {
     this.idTask = +this.router.url.split('/')[2]
@@ -25,13 +35,23 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
   }
 
   getTask(id: number) {
     this.tasksService.getTaskById(id).subscribe({
       next: (res) => {
         this.task = res
+        console.log(this.task);
+        
+        this.checkedItems = this.task.checkList?.filter(t => t.checked === true)
+        if(this.task.status.id === 4) {
+          this.firstButtons = true
+          this.secondButtons = false
+        }
+        else {
+          this.firstButtons = false
+          this.secondButtons = true
+        }
       },
 
       complete: () => {
@@ -44,4 +64,62 @@ export class TaskDetailsComponent implements OnInit {
     })
   }
 
+  checkItem(value: ICheckItem[]) {
+    this.task.checkList.map(t => t.checked = false)
+    this.task.checkList.map(t => 
+      {
+        if(value.map((v: ICheckItem) => v.id).includes(t.id))
+        {
+          t.checked = true
+        }
+      }
+    )
+    this.task.progress = (value.length * 100 / this.task.checkList.length).toFixed(2)
+    this.tasksService.editTask(this.task.id, this.task).subscribe()
+  }
+
+  saveAddItemCheckList() {
+    let newItem: ICheckItem = {} as ICheckItem
+    newItem.id = this.task.checkList.length + 1
+    newItem.checked = false
+    newItem.text = this.addItemCheckListForm.get('text')?.value
+    this.task.checkList.push(newItem)
+    this.task.progress = (this.checkedItems.length * 100 / this.task.checkList.length).toFixed(2)
+    this.tasksService.editTask(this.task.id, this.task).subscribe({
+      complete: () => {
+        this.closeAddItemCheckList()
+      }
+    })
+  }
+
+  closeAddItemCheckList() {
+    this.addItemCheckList = false
+    this.addItemCheckListForm.reset()
+  }
+
+  submitTask() {
+    this.visibleSubmitTask = true
+  }
+
+  closeSubmitTask() {
+    this.visibleSubmitTask = false
+  }
+
+  messageOwner() {
+    this.visibleMessageOwner = true
+  }
+
+  closeMessageOwner() {
+    this.visibleMessageOwner = false
+  }
+
+  cancelMessage() {
+    this.messageToSend = null
+    this.visibleMessageOwner = false
+  }
+
+  sendMessage() {
+    console.log(this.messageToSend);
+    this.cancelMessage()
+  }
 }

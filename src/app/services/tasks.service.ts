@@ -19,4 +19,12 @@ export class TasksService {
   getTaskById(id: number): Observable<ITask> {
     return this.http.get<ITask>(`${this.url}/${id}`)
   }
+
+  addTask(data: ITask): Observable<ITask> {
+    return this.http.post<ITask>(`${this.url}`, data)
+  } 
+
+  editTask(id: number, data: ITask): Observable<ITask> {
+    return this.http.put<ITask>(`${this.url}/${id}`, data)
+  }
 }

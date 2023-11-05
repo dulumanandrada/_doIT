@@ -1,3 +1,4 @@
+import { ICheckItem } from "./check-item"
 import { IStatus } from "./status"
 import { IUser } from "./user"
 
@@ -9,5 +10,7 @@ export interface ITask {
     assignDate: string,
     deadLine: string,
     details: string,
-    status: IStatus
+    status: IStatus,
+    checkList: ICheckItem[],
+    progress: number | string
 }

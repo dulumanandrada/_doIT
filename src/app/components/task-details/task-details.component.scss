@@ -31,6 +31,48 @@
     display: none !important;
 }
 
+//checkbox
+:host ::ng-deep .p-checkbox-box:hover {
+    border-color: $bej;
+}
+:host ::ng-deep .p-checkbox-box.p-highlight {
+    background-color: $bej;
+    border-color: $bej;
+}
+:host ::ng-deep .p-checkbox-box.p-focus {
+    border-color: $bej;
+}
+:host ::ng-deep p-checkbox.p-element {
+    margin: 0 10px;
+    height: 30px;
+    width: 30px;
+}
+:host ::ng-deep .p-checkbox.p-component {
+    height: 100%;
+    width: 100%;
+}
+:host ::ng-deep .p-checkbox-box {
+    height: 100%;
+    width: 100%;
+}
+:host ::ng-deep .check-item {
+    display: flex;
+    align-items: center;
+}
+
+//input form
+:host ::ng-deep .p-inputtext.p-component.p-element {
+    width: 100%;
+}
+
+//textarea
+:host ::ng-deep textarea {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+
 .view {
     width: 100%;
     height: 100%;
@@ -49,9 +91,46 @@
 }
 
 .div1 {
-
+    p {
+        margin: 0;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: large;
+    }
+    
     .title {
         color: $bej;
+    }
+
+    .details {
+        margin: 20px 0;
+        padding: 10px;
+        background-color: $purple;
+        border-radius: 10px;
+    }
+
+    .check-list {
+        .check-item {
+            margin: 10px;
+        }
+
+        .add-item {
+            margin-left: 20px;
+
+            form {
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            button {
+                min-width: max-content;
+                width: 80px;
+                height: 40px;
+            }
+
+            button + button {
+                margin-left: 10px;
+            }
+        }
     }
 }
 
@@ -62,8 +141,6 @@
     height: 80%;
     max-width: 100%;
     border-radius: 10px;
-    // align-items: center;
-    // justify-content: center;
     position: -webkit-sticky;
     position: sticky;
     top: 10px;
@@ -73,7 +150,7 @@
     justify-content: space-between;
     justify-self: flex-end;
 
-    .button {
+    .buttons {
         width: 100%;
         height: 60px;
         display: flex;
@@ -84,8 +161,6 @@
         button {
             width: calc(50% - 10px);
             height: 100%;
-            background-color: $purple;
-            border: none;
         }
     }
 
@@ -104,3 +179,34 @@
     }
 }
 
+.submit-task-modal, .message-owner-modal {
+    p {
+        margin-bottom: 20px !important;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+
+        button {
+            min-width: max-content;
+            width: 80px;
+            height: 40px;
+        }
+        button + button {
+            margin-left: 10px;
+        }
+    }
+}
+
+.message-owner-modal {
+    p {
+        margin-bottom: 0 !important;
+    }
+}
+
+.purple-btn {
+    background-color: $purple;
+    color: $white;
+    border: none;
+}

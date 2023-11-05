@@ -20,6 +20,9 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { CheckboxModule } from 'primeng/checkbox';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { FormsModule } from '@angular/forms';
     ProgressBarModule,
     CalendarModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    CheckboxModule,
+    DialogModule,
+    InputTextModule
   ],
   providers: [],
   exports: [AppRoutingModule],
