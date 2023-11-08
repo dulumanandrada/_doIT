@@ -5,8 +5,10 @@ import { IUser } from "./user"
 export interface ITask {
     id: number,
     title: string,
-    fromPerson: IUser,
-    forPerson: IUser,
+    fromUsername: string,
+    fromGuid: string,
+    forUsername: string,
+    forGuid: string,
     assignDate: string,
     deadLine: string,
     details: string,

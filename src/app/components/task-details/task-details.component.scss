@@ -109,8 +109,22 @@
     }
 
     .check-list {
+        min-width: 50%;
+        width: max-content;
         .check-item {
+            width: 100%;
             margin: 10px;
+            display: flex;
+            justify-content: space-between;
+
+            .delete-btn {
+                background: transparent;
+                color: $white;
+                border: 1px solid rgb($white, 0.5);
+                &:hover {
+                    background: rgb($white, 0.5);
+                }
+            }
         }
 
         .add-item {

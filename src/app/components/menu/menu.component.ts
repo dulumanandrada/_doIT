@@ -9,7 +9,11 @@ import { MenuItem } from 'primeng/api';
 })
 export class MenuComponent {
 
-  constructor(private router: Router) {}
+  username: string | null
+
+  constructor(private router: Router) {
+    this.username = sessionStorage.getItem('user')
+  }
 
   items: MenuItem[] = [
     {

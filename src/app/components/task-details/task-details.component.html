@@ -10,16 +10,22 @@
             </div>
             <div class="check-list">
                 <div *ngFor="let item of task.checkList" class="check-item">
-                    <p-checkbox (ngModelChange)="checkItem($event)" name="group" [value]="item" [(ngModel)]="checkedItems" [inputId]="item.id.toString()"></p-checkbox>
-                    <label [for]="item.id">{{ item.text }}</label>
+                    <div>
+                        <p-checkbox (ngModelChange)="checkItem($event)" name="group" [value]="item" [(ngModel)]="checkedItems" [inputId]="item.id.toString()"></p-checkbox>
+                        <label [for]="item.id">{{ item.text }}</label>
+                    </div>
+                    <button *ngIf="editItemsCheckList" class="btn delete-btn" (click)="deleteItemCheckList(item.id)">X</button>
                 </div>
                 <div class="add-item">
                     <form [formGroup]="addItemCheckListForm" *ngIf="addItemCheckList">
                         <input type="text" pInputText formControlName="text" placeholder="text the details for your task"/>
                     </form>
-                    <button *ngIf="!addItemCheckList" class="btn purple-btn" (click)="addItemCheckList = true">Add item</button>
+                    <button *ngIf="!addItemCheckList && !editItemsCheckList" class="btn purple-btn" (click)="addItemCheckList = true">Add item</button>
+                    <button *ngIf="!addItemCheckList && !editItemsCheckList" class="btn purple-btn" (click)="editItemsCheckList = true">Edit items</button>
                     <button *ngIf="addItemCheckList" class="btn purple-btn" (click)="saveAddItemCheckList()" [disabled]="addItemCheckListForm.invalid">Save</button>
                     <button *ngIf="addItemCheckList" class="btn purple-btn" (click)="closeAddItemCheckList()">Close</button>
+                    <button *ngIf="editItemsCheckList" class="btn purple-btn" (click)="saveEditItemsCheckList()">Save</button>
+                    <button *ngIf="editItemsCheckList" class="btn purple-btn" (click)="dontSaveEditItemsCheckList()">Close</button>
                 </div>
             </div>
         </div>

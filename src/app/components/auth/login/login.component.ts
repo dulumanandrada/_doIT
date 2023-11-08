@@ -14,6 +14,7 @@ export class LoginComponent {
   constructor(private router: Router, private authService: AuthService) {}
 
   title = "Login"
+  invalidLogin: boolean = false
 
   loginForm = new FormGroup({
     username: new FormControl(null, [Validators.required, Validators.minLength(3)]),
@@ -24,7 +25,18 @@ export class LoginComponent {
     console.log(this.loginForm?.value);
     let user: IUser = this.loginForm.value as unknown as IUser
     user.id = user.username
-    this.authService.getUserById(user.id).then(() => this.navigateTo('/board'))
+    this.authService.getUserById(user.id).then((res) => {
+      console.log(res);
+      if(res.id){
+        if(res.password === user.password)
+          { 
+            this.navigateTo('/board')
+            sessionStorage.setItem('user', user.username)
+          }
+        else this.invalidLogin = true
+      }
+      else this.invalidLogin = true
+    })
   }
 
   navigateTo(route: string) {

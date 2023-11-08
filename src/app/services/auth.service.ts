@@ -15,7 +15,7 @@ export class AuthService {
     return await data.json() ?? []
   }
 
-  async getUserById(username: string): Promise<IUser> {
+  async getUserById(username: string): Promise<any> {
     //repara functia de login
     const data = await fetch(`${this.url}/${username}`)
     return await data.json() ?? {}

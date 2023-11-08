@@ -26,6 +26,7 @@ export class TaskDetailsComponent implements OnInit {
   firstButtons: boolean = false
   secondButtons: boolean = false
   addItemCheckList: boolean = false
+  editItemsCheckList: boolean = false
   visibleSubmitTask: boolean = false
   visibleMessageOwner: boolean = false
 
@@ -35,14 +36,13 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
   getTask(id: number) {
     this.tasksService.getTaskById(id).subscribe({
       next: (res) => {
         this.task = res
-        console.log(this.task);
-        
         this.checkedItems = this.task.checkList?.filter(t => t.checked === true)
         if(this.task.status.id === 4) {
           this.firstButtons = true
@@ -95,6 +95,41 @@ export class TaskDetailsComponent implements OnInit {
   closeAddItemCheckList() {
     this.addItemCheckList = false
     this.addItemCheckListForm.reset()
+  }
+
+  saveEditItemsCheckList() {
+    this.tasksService.editTask(this.task.id, this.task).subscribe({
+      complete: () => {
+        this.closeEditItemsCheckList()
+      }
+    })
+  }
+
+  deleteItemCheckList(id: number) {
+    for(let i = 0; i < this.task.checkList.length; i++) {
+      if(this.task.checkList[i].id === id)
+        {         
+          for(let j = i; j < this.task.checkList.length - 1; j++)
+          {
+            this.task.checkList[j].id = this.task.checkList[j].id
+            this.task.checkList[j].checked = this.task.checkList[j+1].checked
+            this.task.checkList[j].text= this.task.checkList[j+1].text
+          }
+          this.task.checkList.pop()
+          this.checkedItems = this.task.checkList?.filter(t => t.checked === true)
+          this.task.progress = (this.checkedItems.length * 100 / this.task.checkList.length).toFixed(2)
+          return
+        }
+    }
+  }
+
+  dontSaveEditItemsCheckList(){
+    this.getTask(this.idTask)
+    this.closeEditItemsCheckList()
+  }
+
+  closeEditItemsCheckList() {
+    this.editItemsCheckList = false
   }
 
   submitTask() {

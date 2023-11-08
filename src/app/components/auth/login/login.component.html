@@ -7,18 +7,21 @@
             <form [formGroup]="loginForm">
                 <div class="row username">
                     <input pInputText type="text" class="p-inputtext-lg" formControlName="username" placeholder="username" 
-                    [ngClass]="{'input-invalid': loginForm && loginForm.get('username')?.touched && loginForm.get('username')?.invalid}"/>
+                    [ngClass]="{'input-invalid': (loginForm && loginForm.get('username')?.touched && loginForm.get('username')?.invalid) || invalidLogin}"/>
                     <span *ngIf="loginForm && loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
                         <strong>Username-ul este obligatoriu! (minim 3 caractere)</strong>
                     </span>
                 </div>
                 <div class="row password">
                     <p-password class="p-inputtext-lg" formControlName="password" placeholder="password" [feedback]="false"
-                    [ngClass]="{'input-invalid': loginForm && loginForm.get('password')?.touched && loginForm.get('password')?.invalid}"></p-password>
+                    [ngClass]="{'input-invalid': (loginForm && loginForm.get('password')?.touched && loginForm.get('password')?.invalid) || invalidLogin}"></p-password>
                     <span *ngIf="loginForm && loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
                         <strong>Parola este obligatorie! (minim 3 caractere)</strong>
                     </span>
                 </div>
+                <span *ngIf="invalidLogin">
+                        <strong>Username-ul sau/si parola sunt gresite</strong>
+                    </span>
             </form>
         </div>
         <div class="row buttons">

@@ -52,7 +52,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     DialogModule,
     InputTextModule
   ],
-  providers: [],
+  providers: [Storage],
   exports: [AppRoutingModule],
   bootstrap: [AppComponent],
   schemas: [

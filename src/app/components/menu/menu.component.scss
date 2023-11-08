@@ -19,7 +19,18 @@
     background-color: $purple;
     display: flex;
     align-items: center;
-    justify-content:flex-end
+    justify-content: flex-end;
+    position: relative;
+}
+
+.username {
+    color: $white;
+    position: absolute;
+    left: 20px;
+    h3 {
+        margin: 0;
+        padding: 0;
+    }
 }
 
 .item {

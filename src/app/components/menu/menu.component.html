@@ -1,5 +1,8 @@
 <div class="bar">
     <div class="items">
+        <div class="username">
+            <h3>Welcome {{ username }}!</h3>
+        </div>
         <div class="item" *ngFor="let item of items" (click)="navigateTo(item?.url)">
             {{item.label}}
         </div>

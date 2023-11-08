@@ -22,7 +22,7 @@ export class BoardComponent implements OnInit{
     this.tasksService.getTasks().subscribe(
       {
         next: (res) => {
-          this.tasks = res
+          this.tasks = res.filter(t => t.forUsername === sessionStorage.getItem('user'))
         }
       }
     )
