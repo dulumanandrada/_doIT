@@ -1,0 +1,39 @@
+<div class="view">
+    <app-menu></app-menu>
+    <div class="content">
+        <div class="employee-card" *ngFor="let user of users">
+            <div class="employee-details">
+                <h3>{{ user.username }}</h3>
+                <button class="btn purple-btn" (click)="showAssignTask(user)">Assign task</button>
+            </div>
+            <div class="employee-tasks">
+                <div *ngFor="let task of getUserTasks(user.username)" class="task">
+                    <h3>{{ task.title }}</h3>
+                    <div class="task-details">
+                        <strong>Assigned date: {{ task.assignDate }}</strong>
+                        <strong>Deadline: {{ task.deadLine }}</strong>
+                    </div>
+                    <div class="status">
+                        {{task.status.message | uppercase}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card flex justify-content-center assign-task">
+        <p-dialog header="Assign task" [(visible)]="visibleAssignTask" [modal]="true" [style]="{ width: '50vw', height: '80vh' }" [draggable]="false" [resizable]="true">
+            <p class="m-0">
+                You can assign a new task for <strong>{{ userAssignTask.username }}</strong>. Complete the details of the task.
+            </p>
+            <form [formGroup]="assignTaskForm" class="form">
+                <input type="text" pInputText formControlName="title" placeholder="Title task"/>
+                <input type="text" pInputText formControlName="details" placeholder="Details task"/>
+                <p-calendar formControlName="deadLine"></p-calendar>
+            </form>
+            <div class="buttons">
+                <button class="btn purple-btn" (click)="closeAssignTask()">Cancel</button>
+                <button class="btn purple-btn" (click)="assignTask()">Assign task</button>
+            </div>
+        </p-dialog>
+    </div>
+</div>

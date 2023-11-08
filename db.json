@@ -17,6 +17,12 @@
       "password": "user2",
       "guid": "2b2d1503-fe8c-5d9b-0296-799c15cbe64b",
       "id": "user2"
+    },
+    {
+      "username": "user3",
+      "password": "user3",
+      "guid": "2b2d1503-fe8c-5d9b-0296-799c15cbe64b",
+      "id": "user2"
     }
   ],
   "tasks": [
@@ -45,16 +51,11 @@
         },
         {
           "id": 3,
-          "checked": true,
-          "text": "e"
-        },
-        {
-          "id": 4,
           "checked": false,
           "text": "asds"
         }
       ],
-      "progress": "50.00"
+      "progress": "33.33"
     },
     {
       "id": 2,
@@ -92,7 +93,33 @@
       "details": "These are details. you should finish the task till deadline.",
       "status": {
         "id": 4,
-        "message": "just send"
+        "message": "just sent"
+      }
+    },
+    {
+      "id": 25,
+      "title": "task 5",
+      "fromUsername": "user1",
+      "forUsername": "andrada1",
+      "assignDate": "2023-09-15",
+      "deadLine": "2023-09-18",
+      "details": "These are details. you should finish the task till deadline.",
+      "status": {
+        "id": 2,
+        "message": "progress"
+      }
+    },
+    {
+      "id": 6,
+      "title": "task 6",
+      "fromUsername": "user1",
+      "forUsername": "andrada1",
+      "assignDate": "2023-09-15",
+      "deadLine": "2023-09-18",
+      "details": "These are details. you should finish the task till deadline.",
+      "status": {
+        "id": 2,
+        "message": "progress"
       }
     }
   ],
@@ -111,7 +138,7 @@
     },
     {
       "id": 4,
-      "message": "just send"
+      "message": "just sent"
     }
   ]
 }

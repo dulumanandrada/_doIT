@@ -11,7 +11,7 @@ export class AuthService {
   url = 'http://localhost:3100/users';
 
   async getUsers(): Promise<IUser[]> {
-    const data = await fetch(this.url)
+    const data = await fetch(`${this.url}`)
     return await data.json() ?? []
   }
 

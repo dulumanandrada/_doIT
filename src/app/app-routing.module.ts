@@ -5,6 +5,7 @@ import { AuthentificationComponent } from './components/auth/authentification/au
 import { AuthComponent } from './components/auth/auth.component';
 import { BoardComponent } from './components/board/board.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
+import { EmployeesComponent } from './components/employees/employees.component';
 
 const routes: Routes = [
   {
@@ -27,26 +28,21 @@ const routes: Routes = [
   },
   {
     path: "board",
-    component: BoardComponent,
+    children: [
+      {
+        path: "",
+        component: BoardComponent
+      },
+      {
+        path: ":id",
+        component: TaskDetailsComponent
+      }
+    ]
   },
   {
-    path: "board/:id",
-    component: TaskDetailsComponent
+    path: "employees",
+    component: EmployeesComponent
   }
-  // {
-  //   path: "auth",
-  //   children: [
-  //     {
-  //       path: "login",
-  //       component: LoginComponent
-  //     },
-  //     {
-  //       path: "authentification",
-  //       component: AuthentificationComponent
-  //     }
-  //   ],
-  //   component: AuthComponent
-  // }
 ];
 
 @NgModule({

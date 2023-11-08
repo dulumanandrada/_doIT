@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { EmployeesComponent } from './components/employees/employees.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     AuthentificationComponent,
     BoardComponent,
     MenuComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    EmployeesComponent
   ],
   imports: [
     BrowserModule,
