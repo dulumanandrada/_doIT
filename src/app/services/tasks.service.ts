@@ -10,7 +10,7 @@ export class TasksService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'http://localhost:3100/tasks';
+  url = 'http://localhost:3000/tasks';
 
   getTasks(): Observable<ITask[]> {
     return this.http.get<ITask[]>(this.url)

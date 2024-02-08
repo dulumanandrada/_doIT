@@ -28,16 +28,6 @@ export class BoardComponent implements OnInit{
     )
   }
 
-  getColorStatus(task: ITask) {
-    if(task.status.id === 1)
-      return 'finished'
-    else if(task.status.id === 2)
-      return 'progress'
-    else if(task.status.id === 3 )
-      return 'late'
-    return 'nothing'
-  }
-
   navigateToTaskDetails(task: ITask) {
     this.router.navigate(['board/' + task.id])
   }

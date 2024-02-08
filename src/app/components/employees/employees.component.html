@@ -10,8 +10,8 @@
                 <div *ngFor="let task of getUserTasks(user.username)" class="task">
                     <h3>{{ task.title }}</h3>
                     <div class="task-details">
-                        <strong>Assigned date: {{ task.assignDate }}</strong>
-                        <strong>Deadline: {{ task.deadLine }}</strong>
+                        <p><strong>Assigned date:</strong> {{ task.assignDate }}</p>
+                        <p><strong>Deadline:</strong> {{ task.deadLine }}</p>
                     </div>
                     <div class="status">
                         {{task.status.message | uppercase}}
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="card flex justify-content-center assign-task">
-        <p-dialog header="Assign task" [(visible)]="visibleAssignTask" [modal]="true" [style]="{ width: '50vw', height: '80vh' }" [draggable]="false" [resizable]="true">
+        <p-dialog header="Assign task" [(visible)]="visibleAssignTask" [modal]="true" [style]="{ width: '50vw', height: '90vh' }" [draggable]="false" [resizable]="true">
             <p class="m-0">
                 You can assign a new task for <strong>{{ userAssignTask.username }}</strong>. Complete the details of the task.
             </p>

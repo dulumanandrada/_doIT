@@ -6,25 +6,26 @@ import { AuthComponent } from './components/auth/auth.component';
 import { BoardComponent } from './components/board/board.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { EmployeesComponent } from './components/employees/employees.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/auth/login",
+    redirectTo: "home",
     pathMatch: "full"
   },
   {
-    path: "auth",
-    redirectTo: "/auth/login",
-    pathMatch: "full"
-  },
-  {
-    path: "auth/login",
+    path: "login",
     component: LoginComponent
   },
   {
-    path: "auth/authentification",
+    path: "authentification",
     component: AuthentificationComponent
+  },
+  {
+    path: "home",
+    component: HomeComponent,
   },
   {
     path: "board",
@@ -37,11 +38,13 @@ const routes: Routes = [
         path: ":id",
         component: TaskDetailsComponent
       }
-    ]
+    ],
+    canActivate: [AuthGuardService]
   },
   {
     path: "employees",
-    component: EmployeesComponent
+    component: EmployeesComponent,
+    canActivate: [AuthGuardService]
   }
 ];
 

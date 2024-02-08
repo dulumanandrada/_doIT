@@ -21,20 +21,24 @@ export class MenuComponent {
       url: "/home"
     },
     {
-      label: "Profile",
-      url: "/profile"
+      label: "Board",
+      url: "/board"
     },
     {
       label: "Employees",
       url: "/employees"
     },
     {
-      label: "Board",
-      url: "/board"
+      label: "Log Out",
+      url: 'logout'
     }
   ]
 
   navigateTo(route: string | undefined) {
-    this.router.navigate([route])
+    if(route === 'logout') {
+      sessionStorage.clear()
+      this.router.navigate(['/login'])
+    }
+    else this.router.navigate([route])
   }
 }

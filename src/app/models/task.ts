@@ -14,5 +14,6 @@ export interface ITask {
     details: string,
     status: IStatus,
     checkList: ICheckItem[],
-    progress: number | string
+    progress: number | string,
+    accepted: number
 }

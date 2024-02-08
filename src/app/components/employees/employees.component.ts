@@ -72,10 +72,20 @@ export class EmployeesComponent implements OnInit {
     newTask.progress = 0
     newTask.status = {
       "id": 4,
-      "message": "just send"
+      "message": "just assigned"
     }
+    newTask.accepted = 2
+    newTask.checkList = []
+    newTask.title = this.assignTaskForm.get('title')?.value
+    newTask.details = this.assignTaskForm.get('details')?.value
+    newTask.deadLine = this.assignTaskForm.get('deadLine')?.value.toISOString().slice(0, 10)
+
     console.log(newTask);
-    
+    this.taskService.addTask(newTask).subscribe({
+      complete: () => {
+        this.getTasks()
+      }
+    })
     this.closeAssignTask()
   }
 }

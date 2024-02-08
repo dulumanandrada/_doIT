@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ICheckItem } from 'src/app/models/check-item';
+import { IMessage } from 'src/app/models/message';
 import { ITask } from 'src/app/models/task';
+import { MessagesService } from 'src/app/services/messages.service';
 import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
@@ -21,7 +23,7 @@ export class TaskDetailsComponent implements OnInit {
   addItemCheckListForm: FormGroup = new FormGroup({
     text: new FormControl(null, [Validators.required, Validators.minLength(1)])
   })
-  messageToSend: string | null = null
+  taskMessages: IMessage[] = []
 
   firstButtons: boolean = false
   secondButtons: boolean = false
@@ -30,7 +32,8 @@ export class TaskDetailsComponent implements OnInit {
   visibleSubmitTask: boolean = false
   visibleMessageOwner: boolean = false
 
-  constructor(private router: Router, private tasksService: TasksService) {
+  constructor(private router: Router, private tasksService: TasksService,
+    private messageService: MessagesService) {
     this.idTask = +this.router.url.split('/')[2]
     this.getTask(this.idTask)
   }
@@ -48,9 +51,13 @@ export class TaskDetailsComponent implements OnInit {
           this.firstButtons = true
           this.secondButtons = false
         }
-        else {
+        else if(this.task.status.id === 1) {
           this.firstButtons = false
           this.secondButtons = true
+        }
+        else {
+          this.firstButtons = false
+          this.secondButtons = false
         }
       },
 
@@ -136,25 +143,95 @@ export class TaskDetailsComponent implements OnInit {
     this.visibleSubmitTask = true
   }
 
+  submitSubmitTask() {
+    const today = new Date().toISOString().slice(0, 10)
+    console.log(today);
+    console.log(this.task.deadLine);
+    
+    
+    if(this.task.deadLine < today) {
+      this.task.status = {
+        id: 3,
+        message: 'late'
+      }
+    }
+    else {
+      this.task.status = {
+        id: 2,
+        message: 'finished'
+      }
+    }
+    this.tasksService.editTask(this.task.id, this.task).subscribe({
+      complete: () => {
+        this.visibleSubmitTask = false
+        this.getTask(this.task.id)
+      }
+    })
+    this.closeSubmitTask()
+  }
+
   closeSubmitTask() {
     this.visibleSubmitTask = false
   }
 
   messageOwner() {
-    this.visibleMessageOwner = true
+    this.messageService.getMessagesTask().subscribe({
+      next: (res) => {
+        this.taskMessages = res.filter(m => m.idTask === this.idTask).sort(this.compareFn)
+      },
+      complete: () => {
+        this.visibleMessageOwner = true
+      }
+    })
   }
 
-  closeMessageOwner() {
-    this.visibleMessageOwner = false
+  compareFn(a: IMessage, b: IMessage) {
+    if(a.id < b.id) return -1
+    else if(a.id > b.id) return 1
+    return 0
   }
 
-  cancelMessage() {
-    this.messageToSend = null
-    this.visibleMessageOwner = false
+  closeMessageOwner(value: boolean) {
+    this.visibleMessageOwner = value
   }
 
-  sendMessage() {
-    console.log(this.messageToSend);
-    this.cancelMessage()
+  sendMessage(value: string) {
+    let newMessage: IMessage = {
+      idTask: this.idTask,
+      content: value,
+      user: this.task.forUsername,
+      date: new Date().toISOString().slice(0, 10)
+    } as IMessage
+    this.messageService.addMessage(newMessage).subscribe({
+      complete: () => {
+        this.taskMessages.push(newMessage)
+      }
+    })
+  }
+
+  acceptTask() {
+    this.task.accepted = 1
+    this.task.status = {
+      id: 1,
+      message: 'progress'
+    }
+    this.tasksService.editTask(this.task.id, this.task).subscribe({
+      complete: () => {
+        this.getTask(this.task.id)
+      }
+    })
+  }
+
+  declineTask() {
+    this.task.accepted = 0
+    this.task.status = {
+      id: 5,
+      message: 'declined'
+    }
+    this.tasksService.editTask(this.task.id, this.task).subscribe({
+      complete: () => {
+        this.getTask(this.task.id)
+      }
+    })
   }
 }

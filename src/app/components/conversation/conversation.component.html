@@ -1,0 +1,17 @@
+<div class="conversation">
+    <div class="top">
+        <div class="message" *ngFor="let message of messages"
+            [ngClass]="{'message-left': message.user !== currentUser }">
+            <div class="message-card" [ngClass]="{'message-left-card': message.user !== currentUser }">
+                {{ message.content }}
+            </div>
+        </div>
+    </div>
+    <div class="type-message">
+        <textarea rows="5" pInputTextarea [autoResize]="true" [(ngModel)]="message" placeholder="Your message..."></textarea>
+        <div class="buttons">
+            <button class="btn purple-btn" (click)="cancelMessage()">Cancel</button>
+            <button class="btn purple-btn" (click)="sendMessage()" [disabled]="!message">Send message</button>
+        </div>
+    </div>
+</div>

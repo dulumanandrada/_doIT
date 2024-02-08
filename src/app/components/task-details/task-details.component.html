@@ -16,7 +16,7 @@
                     </div>
                     <button *ngIf="editItemsCheckList" class="btn delete-btn" (click)="deleteItemCheckList(item.id)">X</button>
                 </div>
-                <div class="add-item">
+                <div class="add-item" *ngIf="task.accepted === 1">
                     <form [formGroup]="addItemCheckListForm" *ngIf="addItemCheckList">
                         <input type="text" pInputText formControlName="text" placeholder="text the details for your task"/>
                     </form>
@@ -37,11 +37,14 @@
                      [inline]="true" [disabled]="true"></p-calendar>
                 </div>
             </div>
-            <div class="buttons">
-                <button *ngIf="firstButtons" class="btn purple-btn">Accept</button>
-                <button *ngIf="firstButtons" class="btn purple-btn">Decline</button>
+            <div class="buttons" *ngIf="task.accepted != 0">
+                <button *ngIf="firstButtons" class="btn purple-btn" (click)="acceptTask()">Accept</button>
+                <button *ngIf="firstButtons" class="btn purple-btn" (click)="declineTask()">Decline</button>
                 <button *ngIf="secondButtons" class="btn purple-btn" (click)="submitTask()">Submit</button>
                 <button *ngIf="secondButtons" class="btn purple-btn" (click)="messageOwner()">Message owner</button>
+            </div>
+            <div class="text-center" *ngIf="task.accepted === 0">
+                <strong>Task declined!</strong>
             </div>
             <div class="progress">
                 <h6>Progress:</h6>
@@ -63,22 +66,20 @@
                 </p>
             </ng-template>
             <div class="buttons">
-                <button class="btn purple-btn">Yes, submit</button>
+                <button class="btn purple-btn" (click)="submitSubmitTask()">Yes, submit</button>
                 <button class="btn purple-btn" (click)="closeSubmitTask()">No, cancel</button>
             </div>
         </p-dialog>
     </div>
 
     <div class="card flex justify-content-center message-owner-modal">
-        <p-dialog header="Message the owner" [(visible)]="visibleMessageOwner" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-            <p class="m-0">
-                Send a message to the owner of the task for further information or if you have uncertainties.
-            </p>
-            <textarea rows="5" pInputTextarea [autoResize]="true" [(ngModel)]="messageToSend" placeholder="Your message..."></textarea>
-            <div class="buttons">
-                <button class="btn purple-btn" (click)="cancelMessage()">Cancel</button>
-                <button class="btn purple-btn" (click)="sendMessage()" [disabled]="!messageToSend">Send message</button>
-            </div>
+        <p-dialog header="Message the owner" [(visible)]="visibleMessageOwner" [modal]="true" [style]="{ width: '50vw', height: '80vh' }" [draggable]="false" [resizable]="false">
+            <app-conversation 
+                [messages]="taskMessages"
+                (visible)="closeMessageOwner($event)"
+                (messageToSend)="sendMessage($event)"
+            ></app-conversation>
         </p-dialog>
     </div>
+
 </div>

@@ -35,27 +35,28 @@
       "deadLine": "2023-09-18",
       "details": "These are details. you should finish the task till deadline. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       "status": {
-        "id": 2,
-        "message": "progress"
+        "id": 3,
+        "message": "late"
       },
       "checkList": [
         {
           "id": 1,
-          "checked": false,
+          "checked": true,
           "text": "a"
         },
         {
           "id": 2,
           "checked": true,
-          "text": "d"
+          "text": "asds"
         },
         {
           "id": 3,
-          "checked": false,
-          "text": "asds"
+          "checked": true,
+          "text": "hcfcj"
         }
       ],
-      "progress": "33.33"
+      "progress": "100.00",
+      "accepted": 2
     },
     {
       "id": 2,
@@ -66,8 +67,8 @@
       "deadLine": "2023-09-18",
       "details": "These are details. you should finish the task till deadline.",
       "status": {
-        "id": 2,
-        "message": "progress"
+        "id": 3,
+        "message": "late"
       }
     },
     {
@@ -79,9 +80,10 @@
       "deadLine": "2023-11-18",
       "details": "These are details. you should finish the task till deadline.",
       "status": {
-        "id": 2,
-        "message": "progress"
-      }
+        "id": 5,
+        "message": "declined"
+      },
+      "accepted": 0
     },
     {
       "id": 4,
@@ -92,9 +94,10 @@
       "deadLine": "2023-09-18",
       "details": "These are details. you should finish the task till deadline.",
       "status": {
-        "id": 4,
-        "message": "just sent"
-      }
+        "id": 5,
+        "message": "declined"
+      },
+      "accepted": 0
     },
     {
       "id": 25,
@@ -105,9 +108,10 @@
       "deadLine": "2023-09-18",
       "details": "These are details. you should finish the task till deadline.",
       "status": {
-        "id": 2,
+        "id": 1,
         "message": "progress"
-      }
+      },
+      "accepted": 1
     },
     {
       "id": 6,
@@ -118,9 +122,107 @@
       "deadLine": "2023-09-18",
       "details": "These are details. you should finish the task till deadline.",
       "status": {
-        "id": 2,
+        "id": 1,
         "message": "progress"
-      }
+      },
+      "accepted": 1
+    },
+    {
+      "fromUsername": "andrada1",
+      "forUsername": "user1",
+      "assignDate": "2024-02-08",
+      "progress": 0,
+      "status": {
+        "id": 4,
+        "message": "just assigned"
+      },
+      "accepted": 2,
+      "checkList": [],
+      "title": "New Task",
+      "details": "acesta este un task de probe",
+      "deadLine": "2024-02-10",
+      "id": 26
+    },
+    {
+      "fromUsername": "andrada1",
+      "forUsername": "user3",
+      "assignDate": "2024-02-08",
+      "progress": 0,
+      "status": {
+        "id": 4,
+        "message": "just assigned"
+      },
+      "accepted": 2,
+      "checkList": [],
+      "title": "dfghfdh",
+      "details": "dfghdgfh",
+      "deadLine": "2024-02-09",
+      "id": 27
+    }
+  ],
+  "conversationTask": [
+    {
+      "id": 1,
+      "idTask": 6,
+      "user": "andrada1",
+      "date": "2024-02-09",
+      "content": "nu am inteles ceva"
+    },
+    {
+      "idTask": 6,
+      "content": "hai sa iti explic ce",
+      "user": "andrada1",
+      "date": "2024-02-08",
+      "id": 2
+    },
+    {
+      "idTask": 6,
+      "content": "ceva nu e biine",
+      "user": "andrada1",
+      "date": "2024-02-08",
+      "id": 3
+    },
+    {
+      "idTask": 6,
+      "content": "ce?",
+      "user": "user1",
+      "date": "2024-02-08",
+      "id": 4
+    },
+    {
+      "idTask": 6,
+      "content": "id really know",
+      "user": "andrada1",
+      "date": "2024-02-08",
+      "id": 5
+    },
+    {
+      "idTask": 6,
+      "content": "ce?",
+      "user": "user1",
+      "date": "2024-02-08",
+      "id": 6
+    },
+    {
+      "idTask": 6,
+      "content": "id really know",
+      "user": "andrada1",
+      "date": "2024-02-08",
+      "id": 7
+    },
+    {
+      "idTask": 6,
+      "content": "hello",
+      "user": "andrada1",
+      "date": "2024-02-08",
+      "id": 8
+    },
+    {
+      "idTask": 6,
+      "content": "hi",
+      "user": "andrada1",
+      "date": "2024-02-08",
+      "id": 9
     }
   ],
   "statusTask": [
@@ -138,7 +240,11 @@
     },
     {
       "id": 4,
-      "message": "just sent"
+      "message": "just assigned"
+    },
+    {
+      "id": 5,
+      "message": "declined"
     }
   ]
 }

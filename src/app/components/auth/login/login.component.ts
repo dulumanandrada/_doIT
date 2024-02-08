@@ -36,7 +36,11 @@ export class LoginComponent {
         else this.invalidLogin = true
       }
       else this.invalidLogin = true
-    })
+    }).catch(
+      (err) => {
+        console.log(err);
+      }
+    )
   }
 
   navigateTo(route: string) {

@@ -24,6 +24,9 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { EmployeesComponent } from './components/employees/employees.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { HomeComponent } from './components/home/home.component';
+import { ConversationComponent } from './components/conversation/conversation.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { EmployeesComponent } from './components/employees/employees.component';
     BoardComponent,
     MenuComponent,
     TaskDetailsComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    HomeComponent,
+    ConversationComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,7 @@ import { EmployeesComponent } from './components/employees/employees.component';
     DialogModule,
     InputTextModule
   ],
-  providers: [Storage],
+  providers: [Storage, AuthGuardService],
   exports: [AppRoutingModule],
   bootstrap: [AppComponent],
   schemas: [

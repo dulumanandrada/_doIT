@@ -18,7 +18,6 @@
     background: transparent !important;
 }
 
-
 .view {
     &::-webkit-scrollbar-thumb {
         background: rgba($purple, 1);
@@ -104,7 +103,13 @@
         .task-details {
             display: flex;
             flex-direction: column;
-            color: $bej;
+            p {
+                margin: 0 !important;
+                strong{
+                    color: $bej;
+                }
+                color: $white;
+            }
         }
 
         .status {

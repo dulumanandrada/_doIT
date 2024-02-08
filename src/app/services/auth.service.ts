@@ -8,17 +8,22 @@ export class AuthService {
 
   constructor() { }
 
-  url = 'http://localhost:3100/users';
+  url = 'http://localhost:3000/users';
 
   async getUsers(): Promise<IUser[]> {
     const data = await fetch(`${this.url}`)
     return await data.json() ?? []
   }
 
-  async getUserById(username: string): Promise<any> {
+  async getUserById(id: string): Promise<any> {
     //repara functia de login
-    const data = await fetch(`${this.url}/${username}`)
-    return await data.json() ?? {}
+    try {
+      const data = await fetch(`${this.url}/${id}`)
+      return await data.json() ?? {}
+    }
+    catch(err){
+      return err
+    }
   }
 
   async addUser(user: IUser) {
@@ -28,5 +33,11 @@ export class AuthService {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(user)
     }).then(res => res.json())
+  }
+
+  public isAuthenticated(): boolean {
+    const user = sessionStorage.getItem('user');
+    if(user) return true
+    else return false
   }
 }
